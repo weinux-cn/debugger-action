@@ -6,7 +6,7 @@ Interactive debugger for GitHub Actions
 ```
 steps:
 - name: Setup Debug Session
-  uses: csexton/debugger-action@master
+  uses: eyu-dev/debugger-action@master
 ```
 
 In the log for the action you will see:
