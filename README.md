@@ -16,7 +16,7 @@ Running tmate...
 
 To connect to this session copy-n-paste the following into a terminal:
 
-ssh redactedMxoJ0pXmjredacted@nyc1.tmate.io
+ssh YQBgP4JX4wasSYQR7VDVmRZ6G@sfo2.tmate.io
 ```
 
 Simply follow the instructions and copy the ssh command into your terminal to create an ssh connection the running instance. The session will close immedeatly after closing the ssh connection to the running instance.
