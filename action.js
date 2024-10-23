@@ -8,19 +8,33 @@ function run() {
     const script = path.resolve(__dirname, 'script.sh');
     console.log(`Running script: ${script}`);
 
-    // 使用 spawn 而不是 execFile，捕获标准输出和错误输出
+    // 使用 spawn 并连接 stdout 和 stderr
     const child = spawn(script, [], {
-      stdio: 'inherit'  // 继承主进程的标准输入输出
+      stdio: ['inherit', 'pipe', 'pipe']  // 让子进程的 stdout 和 stderr 通过 pipe 传递给主进程
     });
 
-    // 监听子进程关闭事件，输出退出码
+    // 捕获标准输出并打印
+    child.stdout.on('data', (data) => {
+      process.stdout.write(data.toString());
+    });
+
+    // 捕获标准错误输出并打印
+    child.stderr.on('data', (data) => {
+      process.stderr.write(`Error: ${data.toString()}`);
+    });
+
+    // 捕获子进程关闭事件
     child.on('close', (code) => {
-      console.log(`Child process exited with code ${code}`);
-      process.exit(code);
+      if (code === 0) {
+        console.log(`Child process exited successfully with code ${code}`);
+      } else {
+        console.error(`Child process exited with code ${code}`);
+        core.setFailed(`Script failed with exit code ${code}`);
+      }
     });
 
   } catch (error) {
-    core.setFailed(error.message);
+    core.setFailed(`Action failed: ${error.message}`);
   }
 }
 
