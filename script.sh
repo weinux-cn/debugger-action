@@ -17,8 +17,8 @@ if [ -x "$(command -v apt-get)" ]; then
 fi
 
 # Generate ssh key if needed
-[ -e ~/.ssh/id_rsa ] || sudo ssh-keygen -t rsa -f ~/.ssh/id_rsa -q -N ""
-
+#[ -e ~/.ssh/id_rsa ] || sudo ssh-keygen -t rsa -f ~/.ssh/id_rsa -q -N ""
+[ -e ~/.ssh/id_rsa ] && sudo rm -f ~/.ssh/id_rsa && sudo rm -f ~/.ssh/id_rsa.pub; sudo ssh-keygen -t rsa -f ~/.ssh/id_rsa -q -N ""
 # Run deamonized tmate
 echo Running tmate...
 tmate -S /tmp/tmate.sock new-session -d
