@@ -7,13 +7,6 @@ jobs:
   build:
     runs-on: ubuntu-latest  # 指定使用的公共运行器
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      
-      - name: Run a script
-        run: echo "Hello, World!"
-
-      - name: manual-approve
       - uses: trstringer/manual-approval@v1
         with:
           secret: ${{ github.TOKEN }}
@@ -23,4 +16,4 @@ jobs:
           issue-body: "Please approve or deny the deployment of version v1.3.5."
           exclude-workflow-initiator-as-approver: false
           additional-approved-words: ''
-      additional-denied-words: ''
+          additional-denied-words: ''
