@@ -1,4 +1,4 @@
-# Action Debugger
+# Action Debugger2
 
 Interactive debugger for GitHub Actions
 
