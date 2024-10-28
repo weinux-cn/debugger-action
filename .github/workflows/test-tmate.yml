@@ -1,5 +1,4 @@
 name: test-tmate
-
 on: [push]
 jobs:
   build:
