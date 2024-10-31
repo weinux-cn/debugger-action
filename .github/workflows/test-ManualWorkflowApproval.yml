@@ -1,4 +1,4 @@
-name: test Manual Workflow Approval
+name: test-Manual Workflow Approval
 
 on:
   workflow_dispatch:
