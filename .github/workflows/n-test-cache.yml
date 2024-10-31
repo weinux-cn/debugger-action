@@ -1,7 +1,6 @@
 on:
-  push:
-    branches:
-      - x
+  workflow_dispatch:
+
 
 jobs:
   with_cache:
