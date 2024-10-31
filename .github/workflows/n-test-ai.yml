@@ -20,10 +20,10 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install requests  # 假设你需要请求库与 AI API 通信
+          pip install requests
 
       - name: Run AI Static Code Analysis
         env:
-          AI_API_KEY: ${{ secrets.AI_API_KEY }}  # 将你的 API 密钥存储在 GitHub Secrets 中
+          AI_API_KEY: ${{ secrets.AI_API_KEY }}
         run: |
           python analyze_code.py
