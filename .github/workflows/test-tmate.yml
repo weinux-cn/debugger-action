@@ -1,5 +1,5 @@
 name: test-tmate
-run-name: Update App to Ali Cloud - ${{ inputs.environment }} | $ {{ inputs.app_name }} | @${{ github.actor }}
+run-name: Update App to Ali Cloud - ${{ github.event.inputs.environment }} | ${{ github.event.inputs.app_name }} | @${{ github.actor }}
 
 on:
 
