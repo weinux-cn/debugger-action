@@ -1,15 +1,39 @@
 name: test-tmate
-on: 
+run-name: Update App to Ali Cloud - ${{ inputs.environment }} | $ {{ inputs.app_name }} | @${{ github.actor }}
+
+on:
+
   workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Select the environment to deploy.'
+        required: true
+        default: 'e2e'
+        type: environment
+        options:
+          - e2e
+          - prod
+
+      app_name:
+        description: 'Select app to update'
+        required: true
+        type: choice
+        default: 'api-service'
+        options:
+          - api-service
+          - preprocessor-service
 jobs:
   build:
     runs-on: ubuntu-latest
     
     steps:
     - uses: actions/checkout@v1
+    - name: test
+      run: |
+        echo '123'
     
-    - name: Setup tmate session
-      uses: mxschmitt/action-tmate@v1
+ #   - name: Setup tmate session
+ #     uses: mxschmitt/action-tmate@v1
       
-    - name: Debuging...
-      run: echo "This is a debug step"
+ #   - name: Debuging...
+ #     run: echo "This is a debug step"
